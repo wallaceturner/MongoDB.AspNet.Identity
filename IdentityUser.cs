@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -49,6 +50,14 @@ namespace MongoDB.AspNet.Identity
         /// </summary>
         /// <value>The logins.</value>
 		public virtual List<UserLoginInfo> Logins { get; private set; }
+        
+        public virtual bool Confirmed { get; set; }
+
+        public virtual int AccessFailedCount { get; set; }
+
+        public virtual bool LockoutEnabled { get; set; }
+        public virtual DateTimeOffset LockoutEndDate { get; set; }
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IdentityUser"/> class.
